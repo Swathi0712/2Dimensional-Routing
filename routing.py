@@ -3,16 +3,23 @@ import turtle
 
 def generateGrid(rows, cols):
     #Create a 2D array
-    grid = [[0]*rows]*cols
+    grid = [[0 for i in range(rows)] for j in range(cols)]
     #initialising the matrix
     print(grid)
+
+    #Create an empty set to check for unique values
+    st = set()
 
     #Generate a random integer matrix
     for i, row in enumerate(grid):
         for j, col in enumerate(row):
-            grid[i][j] = random.randint(1,100)
-    print(grid)
+            temp = random.randint(1,100)
+            while(temp in st):
+                temp = random.randint(1,100)
+            st.add(temp)
+            grid[i][j] = temp
 
+    print(grid)
     return grid
 
 
